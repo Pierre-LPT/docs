@@ -3,16 +3,19 @@ info:
   title: ""
   version: ""
 servers:
-- url: /
+- url: orders.lpt-network.com
 paths:
   /version:
     get:
       tags:
       - default
-      summary: GET - /version
+      summary: Get API version
+      description: |
+        Returns the current version of the Orders API.
+        Useful for health checks, monitoring, and debugging deployments.
       responses:
         "200":
-          description: Default response in case of success
+          description: The current API version.
           content:
             application/json:
               schema:
@@ -48,71 +51,63 @@ paths:
     post:
       tags:
       - chronopost
-      summary: POST - /v1/chronopost/customer
+      summary: Create Chronopost customer
+      description: |
+        Registers a new recipient for Chronopost shipping.
+        Use this endpoint to provide all necessary address and contact details for the recipient.
+        The response contains the created customer information or an error if the request is invalid.
       requestBody:
+        description: Customer details required for Chronopost shipment.
         content:
           application/json:
             schema:
               type: object
               properties:
                 recipient_phone:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Recipient's phone number (E.164 format recommended).
                 recipient_address1:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Primary address line of the recipient.
                 recipient_city:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: City of the recipient.
                 recipient_country_code:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: ISO country code (e.g., 'FR').
                 recipient_country:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Full country name (e.g., 'France').
                 recipient_name:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Full name of the recipient.
                 recipient_name2:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Additional name information (optional).
                 recipient_civility:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Civility or title (e.g., 'Mr', 'Ms').
                 recipient_email:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Email address of the recipient.
                 recipient_zip:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Postal code of the recipient.
                 store:
-                  type: object
-                  properties: {}
-                  description: "/^[0-9a-fA-F]{24}$/"
+                  type: string
+                  description: Store ID (24-character hex string).
                 type:
-                  type: object
-                  properties: {}
-                  description: "PDF, ZPL, BUFF"
-        required: false
+                  type: string
+                  description: Label format. Allowed values: PDF, ZPL, BUFF.
       responses:
         "200":
-          description: Default response in case of success
+          description: Customer created successfully.
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: invalid_request
+          description: Invalid request. Check the provided data.
           content:
             application/json:
               schema:
@@ -122,7 +117,7 @@ paths:
                     type: string
                     default: invalid_request
         "401":
-          description: invalid_token
+          description: Invalid or missing authentication token.
           content:
             application/json:
               schema:
@@ -132,7 +127,7 @@ paths:
                     type: string
                     default: invalid_token
         "403":
-          description: access_denied
+          description: Access denied. You do not have permission to perform this action.
           content:
             application/json:
               schema:
@@ -146,67 +141,60 @@ paths:
     post:
       tags:
       - chronopost
-      summary: POST - /v1/chronopost/lpt
+      summary: Create Chronopost shipment between stores
+      description: |
+        Initiates a shipment between two stores using Chronopost.
+        Provide sender and recipient store IDs, package dimensions, and recipient details.
+        The response includes shipment information or an error if the request is invalid.
       requestBody:
+        description: Shipment details including sender, recipient, and package information.
         content:
           application/json:
             schema:
               type: object
               properties:
                 from:
-                  type: object
-                  properties: {}
-                  description: Store ID
+                  type: string
+                  description: Sender store ID (24-character hex string).
                 to:
-                  type: object
-                  properties: {}
-                  description: Store ID
+                  type: string
+                  description: Recipient store ID (24-character hex string).
                 height:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: number
+                  description: Package height in centimeters.
                 width:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: number
+                  description: Package width in centimeters.
                 length:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: number
+                  description: Package length in centimeters.
                 weight:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: number
+                  description: Package weight in kilograms.
                 recipient_name2:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Additional recipient name information (optional).
                 recipient_civility:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Civility or title (e.g., 'Mr', 'Ms').
                 recipient_email:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Email address of the recipient.
                 recipient_zip:
-                  type: object
-                  properties: {}
-                  description: ""
+                  type: string
+                  description: Postal code of the recipient.
                 type:
-                  type: object
-                  properties: {}
-                  description: "PDF, ZPL, BUFF"
-        required: false
+                  type: string
+                  description: Label format. Allowed values: PDF, ZPL, BUFF.
       responses:
         "200":
-          description: Default response in case of success
+          description: Shipment created successfully.
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: invalid_request
+          description: Invalid request. Check the provided data.
           content:
             application/json:
               schema:
@@ -216,7 +204,7 @@ paths:
                     type: string
                     default: invalid_request
         "401":
-          description: invalid_token
+          description: Invalid or missing authentication token.
           content:
             application/json:
               schema:
@@ -226,7 +214,7 @@ paths:
                     type: string
                     default: invalid_token
         "403":
-          description: access_denied
+          description: Access denied. You do not have permission to perform this action.
           content:
             application/json:
               schema:
@@ -386,23 +374,26 @@ paths:
     get:
       tags:
       - chronopost
-      summary: "GET - /v1/chronopost/{filename}/"
+      summary: Download Chronopost file
+      description: |
+        Retrieves a specific file related to Chronopost shipments.
+        The filename must be provided in the path and should include the file extension.
       parameters:
       - name: filename
         in: path
         required: true
-        description: "The filename parameter"
+        description: Name of the file to download, including extension (e.g., "label.pdf").
         schema:
           type: string
       responses:
         "200":
-          description: Default response in case of success
+          description: File retrieved successfully.
           content:
             application/json:
               schema:
                 type: object
         "400":
-          description: invalid_request
+          description: Invalid request. Check the filename parameter.
           content:
             application/json:
               schema:
@@ -412,7 +403,7 @@ paths:
                     type: string
                     default: invalid_request
         "401":
-          description: invalid_token
+          description: Invalid or missing authentication token.
           content:
             application/json:
               schema:
@@ -422,7 +413,7 @@ paths:
                     type: string
                     default: invalid_token
         "403":
-          description: access_denied
+          description: Access denied. You do not have permission to perform this action.
           content:
             application/json:
               schema:
@@ -1388,14 +1379,35 @@ paths:
               schema:
                 type: object
         "400":
-          content: {}
-          description: ""
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
         "401":
-          content: {}
-          description: ""
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
         "403":
-          content: {}
-          description: ""
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
       x-codegen-request-body-name: body
   /v1/invoice/{filename}/:
     get:
