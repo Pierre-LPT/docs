@@ -1,0 +1,4002 @@
+openapi: 3.0.1
+info:
+  title: ""
+  version: ""
+servers:
+- url: /
+paths:
+  /version:
+    get:
+      tags:
+      - default
+      summary: GET - /version
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/docs/aws/csv:
+    get:
+      tags:
+      - docs
+      summary: GET - /v1/docs/aws/csv
+      parameters:
+      - name: orderId
+        in: query
+        description: ' positive'
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+  /v1/chronopost/customer:
+    post:
+      tags:
+      - chronopost
+      summary: POST - /v1/chronopost/customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient_phone:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_address1:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_city:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_country_code:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_country:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_name2:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_civility:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_email:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_zip:
+                  type: object
+                  properties: {}
+                  description: ""
+                store:
+                  type: object
+                  properties: {}
+                  description: "/^[0-9a-fA-F]{24}$/"
+                type:
+                  type: object
+                  properties: {}
+                  description: "PDF, ZPL, BUFF"
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/chronopost/lpt:
+    post:
+      tags:
+      - chronopost
+      summary: POST - /v1/chronopost/lpt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: object
+                  properties: {}
+                  description: Store ID
+                to:
+                  type: object
+                  properties: {}
+                  description: Store ID
+                height:
+                  type: object
+                  properties: {}
+                  description: ""
+                width:
+                  type: object
+                  properties: {}
+                  description: ""
+                length:
+                  type: object
+                  properties: {}
+                  description: ""
+                weight:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_name2:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_civility:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_email:
+                  type: object
+                  properties: {}
+                  description: ""
+                recipient_zip:
+                  type: object
+                  properties: {}
+                  description: ""
+                type:
+                  type: object
+                  properties: {}
+                  description: "PDF, ZPL, BUFF"
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/chronopost/pickupPoints:
+    get:
+      tags:
+      - chronopost
+      summary: GET - /v1/chronopost/pickupPoints
+      parameters:
+      - name: address
+        in: query
+        schema:
+          type: string
+      - name: zipCode
+        in: query
+        schema:
+          type: string
+      - name: city
+        in: query
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/chronopost/{order_id}/:
+    post:
+      tags:
+      - chronopost
+      summary: "POST - /v1/chronopost/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ignoreAddingStatus:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_document_type, invalid_document_type,\
+            \ invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_document_type
+                    enum:
+                    - invalid_document_type
+                    - invalid_document_type
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: "one from list access_denied, access_denied, access_denied"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+                    enum:
+                    - access_denied
+                    - access_denied
+                    - access_denied
+        "404":
+          description: "one from list order_not_found, order_not_found, chronopost_not_found,\
+            \ chronopost_not_found, sending_store_not_found, sending_store_not_found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+                    enum:
+                    - order_not_found
+                    - order_not_found
+                    - chronopost_not_found
+                    - chronopost_not_found
+                    - sending_store_not_found
+                    - sending_store_not_found
+      x-codegen-request-body-name: body
+  /v1/chronopost/{filename}/:
+    get:
+      tags:
+      - chronopost
+      summary: "GET - /v1/chronopost/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        description: "The filename parameter"
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/docs:
+    get:
+      tags:
+      - docs
+      summary: GET - /v1/docs
+      parameters:
+      - name: order_id
+        in: query
+        description: ' positive'
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/docs/unitedDocs:
+    get:
+      tags:
+      - docs
+      summary: GET - /v1/docs/unitedDocs
+      parameters:
+      - name: doc
+        in: query
+        description: "quotation, invoice, caresheet"
+        schema:
+          type: string
+          enum:
+          - quotation
+          - invoice
+          - caresheet
+      - name: "orderIds[]"
+        in: query
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: file_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: file_not_found
+  /v1/docs/unitedLabDocs:
+    get:
+      tags:
+      - docs
+      summary: GET - /v1/docs/unitedLabDocs
+      parameters:
+      - name: "docs[]"
+        in: query
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: orderID
+        in: query
+        description: ' positive'
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: file_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: file_not_found
+  /v1/docs/aws:
+    get:
+      tags:
+      - docs
+      summary: GET - /v1/docs/aws
+      parameters:
+      - name: key
+        in: query
+        schema:
+          type: string
+      - name: backet
+        in: query
+        schema:
+          type: string
+      - name: awsKey
+        in: query
+        schema:
+          type: string
+      - name: awsSecret
+        in: query
+        schema:
+          type: string
+      - name: download
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+    post:
+      tags:
+      - docs
+      summary: POST - /v1/docs/aws
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+    delete:
+      tags:
+      - docs
+      summary: DELETE - /v1/docs/aws
+      parameters:
+      - name: key
+        in: query
+        schema:
+          type: string
+      - name: bucket
+        in: query
+        schema:
+          type: string
+      - name: awsKey
+        in: query
+        schema:
+          type: string
+      - name: awsSecret
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/docs/awsBulk:
+    post:
+      tags:
+      - docs
+      summary: POST - /v1/docs/awsBulk
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/docs/duplicate:
+    put:
+      tags:
+      - docs
+      summary: PUT - /v1/docs/duplicate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sourceKey:
+                  type: object
+                  properties: {}
+                  description: ""
+                targetKey:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/docs/eyeExamXml/{patientId}/:
+    get:
+      tags:
+      - docs
+      summary: "GET - /v1/docs/eyeExamXml/{patientId}/"
+      parameters:
+      - name: patientId
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/docs/compressAndUpload:
+    post:
+      tags:
+      - docs
+      summary: POST - v1/docs/compressAndUpload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: "JPG, PNG, HEIC supported"
+                  format: binary
+                maxSize:
+                  type: number
+                  description: in kilobytes
+                bucket:
+                  type: string
+                  description: aws or gcloud bucket
+                path:
+                  type: string
+                  description: relative path to result file in bucket
+                service:
+                  type: string
+                  description: ""
+                  enum:
+                  - s3
+                  - gcloud
+        required: true
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                  Key:
+                    type: string
+                    description: Object Id
+                  quality:
+                    type: number
+                    description: Result quality
+        "400":
+          description: "one from list invalid_file, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_file
+                    enum:
+                    - invalid_file
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "406":
+          description: mime_type_not_supported
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: mime_type_not_supported
+  /v1/invoice/order/{order_id}/:
+    post:
+      tags:
+      - invoice
+      summary: "POST - /v1/invoice/order/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        description: Order Id positive
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+  /v1/invoice/orders:
+    post:
+      tags:
+      - invoice
+      summary: POST - /v1/invoice/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_request, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+                    enum:
+                    - invalid_request
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/invoice/orders/send:
+    post:
+      tags:
+      - invoice
+      summary: POST - /v1/invoice/orders/send
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+                email:
+                  type: object
+                  properties: {}
+                  description: Client's Email
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/invoice:
+    get:
+      tags:
+      - invoice
+      summary: GET - /v1/invoice
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+    post:
+      tags:
+      - invoice
+      summary: POST - /v1/invoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: object
+                  properties: {}
+                  description: ""
+                order_id:
+                  type: object
+                  properties: {}
+                  description: ""
+                store_id:
+                  type: object
+                  properties: {}
+                  description: Store Id
+                seller:
+                  type: object
+                  properties: {}
+                  description: lastname + firstname
+                created_at:
+                  type: object
+                  properties: {}
+                  description: ""
+                end_validity_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                buying_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_lastname:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_firstname:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_birthdate:
+                  type: object
+                  properties: {}
+                  description: ""
+                prescription_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                prescriptor:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_id:
+                  type: object
+                  properties: {}
+                  description: Client Id
+                client_address:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_zip:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_city:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_email:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_ssn:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_phone:
+                  type: object
+                  properties: {}
+                  description: ""
+                buy_frame:
+                  type: object
+                  properties: {}
+                  description: ""
+                frame_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                frame_price:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_tint:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_price:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                paiement_type:
+                  type: object
+                  properties: {}
+                  description: "/^[A-Z]+$/"
+                frame_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_buy:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_sphere:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                right_lens_cylinder:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                right_lens_axe:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_addition:
+                  type: object
+                  properties: {}
+                  description: "/^((\\+|\\-)?[0-9\\.])|(Non)+$/"
+                right_lens_degression:
+                  type: object
+                  properties: {}
+                  description: "Non, 0, 80, 130"
+                right_lens_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_buy:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_sphere:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                left_lens_cylinder:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                left_lens_axe:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_addition:
+                  type: object
+                  properties: {}
+                  description: "/^((\\+|\\-)?[0-9\\.])|(Non)+$/"
+                left_lens_degression:
+                  type: object
+                  properties: {}
+                  description: "Non, 0, 80, 130"
+                left_lens_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount_percent:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount_total:
+                  type: object
+                  properties: {}
+                  description: ""
+                referrals:
+                  type: object
+                  properties: {}
+                  description: ""
+                price:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount:
+                  type: object
+                  properties: {}
+                  description: in percentage
+                chronopost:
+                  type: object
+                  properties: {}
+                  description: ""
+                chronopost_address:
+                  type: object
+                  properties: {}
+                  description: ""
+                chronopost_price:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/invoice/{filename}/:
+    get:
+      tags:
+      - invoice
+      summary: "GET - /v1/invoice/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        description: filename with extension
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+  /v1/invoice/{id}/download:
+    get:
+      tags:
+      - invoice
+      summary: "GET - /v1/invoice/{id}/download"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The invoice ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+  /v1/invoice/{id}/print:
+    post:
+      tags:
+      - invoice
+      summary: "POST - /v1/invoice/{id}/print"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The invoice ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+  /v1/invoiceCredit/orders:
+    post:
+      tags:
+      - invoiceCredit
+      summary: POST - /v1/invoiceCredit/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/caresheet:
+    get:
+      tags:
+      - caresheet
+      summary: GET - /v1/caresheet
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+    post:
+      tags:
+      - caresheet
+      summary: POST - /v1/caresheet
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/caresheet/lpp/{lpp}/:
+    get:
+      tags:
+      - caresheet
+      summary: "GET - /v1/caresheet/lpp/{lpp}/"
+      parameters:
+      - name: lpp
+        in: path
+        required: true
+        description: "The LPP parameter"
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/caresheet/{filename}/:
+    get:
+      tags:
+      - caresheet
+      summary: "GET - /v1/caresheet/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        description: "The filename parameter"
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/caresheet/{id}/download:
+    get:
+      tags:
+      - caresheet
+      summary: "GET - /v1/caresheet/{id}/download"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The caresheet ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/caresheet/{id}/print:
+    post:
+      tags:
+      - caresheet
+      summary: "POST - /v1/caresheet/{id}/print"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The caresheet ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/caresheet/orders:
+    post:
+      tags:
+      - caresheet
+      summary: POST - /v1/caresheet/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_request, caresheet_cant_generated, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+                    enum:
+                    - invalid_request
+                    - caresheet_cant_generated
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+      x-codegen-request-body-name: body
+  /v1/caresheet/belgium/orders:
+    post:
+      tags:
+      - caresheet
+      summary: POST - /v1/caresheet/belgium/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_request, order_not_suitable, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+                    enum:
+                    - invalid_request
+                    - order_not_suitable
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+      x-codegen-request-body-name: body
+  /v1/fabrication/orders:
+    post:
+      tags:
+      - fabrication
+      summary: POST - /v1/fabrication/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+                type:
+                  type: object
+                  properties: {}
+                  description: "sticker, ticket"
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_request, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+                    enum:
+                    - invalid_request
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/fabrication/{order_id}/:
+    post:
+      tags:
+      - fabrication
+      summary: "POST - /v1/fabrication/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: object
+                  properties: {}
+                  description: "sticker, ticket"
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/fabrication/printBatch:
+    get:
+      tags:
+      - fabrication
+      summary: GET - /v1/fabrication/printBatch
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: "one from list orders_not_found, file_not_found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: orders_not_found
+                    enum:
+                    - orders_not_found
+                    - file_not_found
+  /v1/quotation/order/{order_id}/:
+    post:
+      tags:
+      - quotation
+      summary: "POST - /v1/quotation/order/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        description: Order Id positive
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+        "406":
+          description: order_already_paid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_already_paid
+  /v1/quotation/orders:
+    post:
+      tags:
+      - quotation
+      summary: POST - /v1/quotation/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_request, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+                    enum:
+                    - invalid_request
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/quotation/orders/send:
+    post:
+      tags:
+      - quotation
+      summary: POST - /v1/quotation/orders/send
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+                email:
+                  type: object
+                  properties: {}
+                  description: Client's Email
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: "one from list send_quotation_failed, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: send_quotation_failed
+                    enum:
+                    - send_quotation_failed
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/quotation:
+    get:
+      tags:
+      - quotation
+      summary: GET - /v1/quotation
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+    post:
+      tags:
+      - quotation
+      summary: POST - /v1/quotation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: object
+                  properties: {}
+                  description: ""
+                order_id:
+                  type: object
+                  properties: {}
+                  description: ""
+                store_id:
+                  type: object
+                  properties: {}
+                  description: Store Id
+                seller:
+                  type: object
+                  properties: {}
+                  description: lastname + firstname
+                created_at:
+                  type: object
+                  properties: {}
+                  description: ""
+                end_validity_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                buying_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_lastname:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_firstname:
+                  type: object
+                  properties: {}
+                  description: ""
+                patient_birthdate:
+                  type: object
+                  properties: {}
+                  description: ""
+                prescription_date:
+                  type: object
+                  properties: {}
+                  description: ""
+                prescriptor:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_id:
+                  type: object
+                  properties: {}
+                  description: Client Id
+                client_address:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_zip:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_city:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_email:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_ssn:
+                  type: object
+                  properties: {}
+                  description: ""
+                client_phone:
+                  type: object
+                  properties: {}
+                  description: ""
+                buy_frame:
+                  type: object
+                  properties: {}
+                  description: ""
+                frame_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                frame_price:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_tint:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_price:
+                  type: object
+                  properties: {}
+                  description: ""
+                lenses_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                paiement_type:
+                  type: object
+                  properties: {}
+                  description: "/^[A-Z]+$/"
+                frame_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_buy:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_sphere:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                right_lens_cylinder:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                right_lens_axe:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                right_lens_addition:
+                  type: object
+                  properties: {}
+                  description: "/^((\\+|\\-)?[0-9\\.])|(Non)+$/"
+                right_lens_degression:
+                  type: object
+                  properties: {}
+                  description: "Non, 0, 80, 130"
+                right_lens_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_buy:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_sphere:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                left_lens_cylinder:
+                  type: object
+                  properties: {}
+                  description: "/^(\\+|\\-)?[0-9\\.]+$/"
+                left_lens_axe:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_indice:
+                  type: object
+                  properties: {}
+                  description: ""
+                left_lens_addition:
+                  type: object
+                  properties: {}
+                  description: "/^((\\+|\\-)?[0-9\\.])|(Non)+$/"
+                left_lens_degression:
+                  type: object
+                  properties: {}
+                  description: "Non, 0, 80, 130"
+                left_lens_lpp:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount_percent:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount_total:
+                  type: object
+                  properties: {}
+                  description: ""
+                referrals:
+                  type: object
+                  properties: {}
+                  description: ""
+                price:
+                  type: object
+                  properties: {}
+                  description: ""
+                discount:
+                  type: object
+                  properties: {}
+                  description: in percentage
+                chronopost:
+                  type: object
+                  properties: {}
+                  description: ""
+                chronopost_address:
+                  type: object
+                  properties: {}
+                  description: ""
+                chronopost_price:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/quotation/{filename}/:
+    get:
+      tags:
+      - quotation
+      summary: "GET - /v1/quotation/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        description: filename with extension
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/quotation/{id}/download:
+    get:
+      tags:
+      - quotation
+      summary: "GET - /v1/quotation/{id}/download"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The quotation ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/quotation/{id}/print:
+    post:
+      tags:
+      - quotation
+      summary: "POST - /v1/quotation/{id}/print"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "The quotation ID"
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/eyesight/{order_id}/:
+    get:
+      tags:
+      - eyesight
+      summary: "GET - /v1/eyesight/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        description: Order Id positive
+        required: true
+        schema:
+          type: integer
+      - name: patientIndex
+        in: query
+        description: ' positive'
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list send_eyesight_failed, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: send_eyesight_failed
+                    enum:
+                    - send_eyesight_failed
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+  /v1/eyesight/putEyeExam/{patient_id}/:
+    put:
+      tags:
+      - eyesight
+      summary: "PUT - /v1/eyesight/putEyeExam/{patient_id}/"
+      parameters:
+      - name: patient_id
+        in: path
+        description: Patient Id positive
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startedAt:
+                  type: object
+                  properties: {}
+                  description: ""
+                employee:
+                  type: object
+                  properties: {}
+                  description: "/^[0-9a-fA-F]{24}$/"
+                prescriber_name:
+                  type: object
+                  properties: {}
+                  description: ""
+                prescripted_at:
+                  type: object
+                  properties: {}
+                  description: ""
+                far:
+                  type: object
+                  properties:
+                    l_sphere:
+                      type: number
+                      description: ""
+                    l_cylinder:
+                      type: number
+                      description: ""
+                    l_axis:
+                      type: number
+                      description: ""
+                    l_addition:
+                      type: number
+                      description: ""
+                    r_sphere:
+                      type: number
+                      description: ""
+                    r_cylinder:
+                      type: number
+                      description: ""
+                    r_axis:
+                      type: number
+                      description: ""
+                    r_addition:
+                      type: number
+                      description: ""
+                  description: ""
+                near:
+                  type: object
+                  properties:
+                    l_sphere:
+                      type: number
+                      description: ""
+                    l_cylinder:
+                      type: number
+                      description: ""
+                    l_axis:
+                      type: number
+                      description: ""
+                    l_addition:
+                      type: number
+                      description: ""
+                    r_sphere:
+                      type: number
+                      description: ""
+                    r_cylinder:
+                      type: number
+                      description: ""
+                    r_axis:
+                      type: number
+                      description: ""
+                    r_addition:
+                      type: number
+                      description: ""
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: patient_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: patient_not_found
+      x-codegen-request-body-name: body
+  /v1/tp-agreement/orders:
+    post:
+      tags:
+      - tp-agreement
+      summary: POST - /v1/tp-agreement/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/tp-agreement/shopifyForm:
+    post:
+      tags:
+      - tp-agreement
+      summary: POST - /v1/tp-agreement/shopifyForm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: object
+                  properties: {}
+                  description: ""
+                lastname:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/deliveryNote:
+    post:
+      tags:
+      - deliveryNote
+      summary: POST - /v1/deliveryNote
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderId:
+                  type: object
+                  properties: {}
+                  description: Order Id positive
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+      x-codegen-request-body-name: body
+  /v1/jira/auth:
+    post:
+      tags:
+      - jira
+      summary: POST - /v1/jira/auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: object
+                  properties: {}
+                  description: ""
+                password:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/jira/checkAuth:
+    get:
+      tags:
+      - jira
+      summary: GET - /v1/jira/checkAuth
+      parameters:
+      - name: jiraToken
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "406":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+  /v1/jira/issue/{issueId}/:
+    get:
+      tags:
+      - jira
+      summary: "GET - /v1/jira/issue/{issueId}/"
+      parameters:
+      - name: issueId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jiraToken
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "406":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+  /v1/jira/issue/{issueId}/logWork:
+    get:
+      tags:
+      - jira
+      summary: "GET - /v1/jira/issue/{issueId}/logWork"
+      parameters:
+      - name: issueId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jiraToken
+        in: query
+        schema:
+          type: string
+      - name: dateFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: dateTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "406":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+  /v1/sealing:
+    get:
+      tags:
+      - sealing
+      summary: GET - /v1/sealing
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+    post:
+      tags:
+      - sealing
+      summary: POST - /v1/sealing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: object
+                  properties: {}
+                  description: Order Id positive
+                firstname:
+                  type: object
+                  properties: {}
+                  description: ""
+                lastname:
+                  type: object
+                  properties: {}
+                  description: ""
+                takeway_store:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_missing_argument, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_missing_argument
+                    enum:
+                    - invalid_missing_argument
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/sealing/{filename}/:
+    get:
+      tags:
+      - sealing
+      summary: "GET - /v1/sealing/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        description: "The filename parameter"
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/breakage:
+    post:
+      tags:
+      - breakage
+      summary: POST - /v1/breakage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: object
+                  properties: {}
+                  description: Order Id positive
+                status:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: "one from list invalid_missing_argument, invalid_request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_missing_argument
+                    enum:
+                    - invalid_missing_argument
+                    - invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+      x-codegen-request-body-name: body
+  /v1/breakage/{filename}/:
+    get:
+      tags:
+      - breakage
+      summary: "GET - /v1/breakage/{filename}/"
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        description: "The filename parameter"
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/changelog:
+    get:
+      tags:
+      - changelog
+      summary: GET - /v1/changelog
+      parameters:
+      - name: date_from
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: date_to
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+  /v1/xml/orders:
+    post:
+      tags:
+      - xml
+      summary: POST - /v1/xml/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+      x-codegen-request-body-name: body
+  /v1/xml/{order_id}/:
+    post:
+      tags:
+      - xml
+      summary: "POST - /v1/xml/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        description: Order Id positive
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+  /v1/csv/{order_id}/:
+    post:
+      tags:
+      - csv
+      summary: "POST - /v1/csv/{order_id}/"
+      parameters:
+      - name: order_id
+        in: path
+        description: Order Id positive
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+  /v1/manufacturingTxt/orders:
+    post:
+      tags:
+      - manufacturingTxt
+      summary: POST - /v1/manufacturingTxt/orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orders:
+                  type: object
+                  properties: {}
+                  description: ""
+        required: false
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          content: {}
+          description: ""
+        "401":
+          content: {}
+          description: ""
+        "403":
+          content: {}
+          description: ""
+      x-codegen-request-body-name: body
+  /v1/merchandising:
+    get:
+      tags:
+      - merchandising
+      summary: GET - /v1/merchandising
+      parameters:
+      - name: store_id
+        in: query
+        description: "/^[0-9a-fA-F]{24}$/"
+        schema:
+          type: string
+      - name: week
+        in: query
+        schema:
+          type: number
+      - name: year
+        in: query
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Default response in case of success
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: merchandising_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: merchandising_not_found
+  /v1/mergeDocuments:
+    post:
+      tags:
+      - mergeDocuments
+      summary: POST - /v1/mergeDocuments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                initialOrderId:
+                  type: object
+                  properties: {}
+                  description: Initial order Id positive
+                reOrderId:
+                  type: object
+                  properties: {}
+                  description: reOrder Id positive
+        required: false
+      responses:
+        "200":
+          description: "Generated automatically, please update definition in api/swagger"
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_request
+        "401":
+          description: invalid_token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: invalid_token
+        "403":
+          description: access_denied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: access_denied
+        "404":
+          description: order_not_found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tsl:
+                    type: string
+                    default: order_not_found
+      x-codegen-request-body-name: body
+components: {}
+x-original-swagger-version: "2.0"
